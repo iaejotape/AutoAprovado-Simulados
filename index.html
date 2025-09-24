@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado DETRAN - Prova Teórica 2025</title>
+    
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Estilos customizados */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Header personalizado */
+        .navbar {
+            background: var(--primary-gradient) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            min-height: 80px !important;
+            z-index: 1000 !important;
+        }
+
+        .navbar-brand .title {
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-item {
+            padding: 0.5rem 0.75rem !important;
+        }
+
+        .navbar-brand .navbar-item {
+            display: flex !important;
+            align-items: center !important;
+            min-height: 80px !important;
+        }
+
+        /* Cards com efeitos modernos */
+        .modern-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .modern-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Botões de opção modernos */
+        .option-button {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.75rem;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .option-button:hover::before {
+            left: 100%;
+        }
+
+        .option-button:hover {
+            transform: translateX(5px);
+            border-color: #3273dc;
+            box-shadow: 0 4px 15px rgba(50, 115, 220, 0.2);
+        }
+
+        .option-button.selected {
+            background: linear-gradient(135deg, #3273dc, #4285f4);
+            color: white;
+            border-color: #3273dc;
+            transform: scale(1.02);
+        }
+
+
+
+        /* Barra de progresso personalizada */
+        .progress-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .progress.is-primary {
+            background: linear-gradient(90deg, #e1e5e9, #f5f5f5);
+            border-radius: 10px;
+            height: 12px;
+        }
+
+        .progress.is-primary::-webkit-progress-value {
+            background: var(--primary-gradient);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .progress.is-primary::-moz-progress-bar {
+            background: var(--primary-gradient);
+            border-radius: 10px;
+        }
+
+        /* Botões de navegação */
+        .nav-button {
+            border-radius: 12px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+
+        .nav-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Tela de resultados */
+        .result-container {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .score-circle.approved {
+            background: linear-gradient(135deg, #48c774, #4caf50);
+            animation: approvedGlow 2s ease-in-out infinite alternate;
+        }
+
+        .score-circle.failed {
+            background: linear-gradient(135deg, #f14668, #e91e63);
+            animation: failedPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes approvedGlow {
+            0% { box-shadow: 0 0 20px rgba(72, 199, 116, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(72, 199, 116, 0.8); }
+        }
+
+        @keyframes failedPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Estatísticas */
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Animações de transição */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .score-circle {
+                width: 150px;
+                height: 150px;
+                font-size: 2rem;
+            }
+            
+            .option-button {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Utilitários */
+        .hidden {
+            display: none !important;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-gradient);
+            color: white;
+            margin-top: 4rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header fixo -->
+    <nav class="navbar is-fixed-top" role="navigation">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <h1 class="title is-4">
+                    <img src="./img/logo.png" alt="Logo AutoAprovado" style="height: 50px !important; width: auto !important; max-height: none !important;">
+                </h1>
+            </div>
+        </div>
+        
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <button class="button is-light nav-button" id="btn-iniciar" onclick="iniciarSimulado()">
+                        <i class="fas fa-play mr-2"></i>
+                        Iniciar Simulado
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main style="margin-top: 5rem; padding: 2rem 0;">
+        
+        <!-- Tela inicial -->
+        <section class="section" id="tela-inicial">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="modern-card card fade-in">
+                            <div class="card-content">
+                                <div class="content has-text-centered">
+
+                                    <h2 class="title is-1 has-text-primary mb-2"><img src="./img/logo2.png" alt="logo AutoAprovado"></h2>
+                                    <h3 class="subtitle is-3 has-text-grey">Prova Teórica do Detran 2025</h3>
+                                    
+                                    <div class="box glass-effect my-5">
+                                        <h4 class="title is-4 has-text-primary mb-4">
+                                            <i class="fas fa-info-circle mr-2"></i>
+                                            Instruções
+                                        </h4>
+                                        <div class="columns is-multiline">
+                                            <div class="column is-6">
+                                                <div class="has-text-left">
+                                                    <p class="mb-2">
+                                                        <i class="fas fa-check has-text-success mr-2"></i>
+                                                        <strong>30 questões</strong> de múltipla escolha
+                                                    </p>
+                                                    <p class="mb-2">
+                                                        <i class="fas fa-target has-text-success mr-2"></i>
+                                                        Mínimo <strong>21 acertos (70%)</strong> para aprovação
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="column is-6">
+                                                <div class="has-text-left">
+                                                    <p class="mb-2">
+                                                        <i class="fas fa-mouse-pointer has-text-success mr-2"></i>
+                                                        Navegue com os <strong>botões</strong>
+                                                    </p>
+                                                    <p class="mb-2">
+                                                        <i class="fas fa-chart-line has-text-success mr-2"></i>
+                                                        <strong>Resultado detalhado</strong> ao final
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="button is-primary is-large nav-button" onclick="iniciarSimulado()">
+                                        <i class="fas fa-rocket mr-2"></i>
+                                        <strong>Começar Simulado</strong>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tela do simulado -->
+        <section class="section hidden" id="tela-simulado">
+            <div class="container">
+                
+                <!-- Barra de progresso -->
+                <div class="progress-container">
+                    <div class="level mb-4">
+                        <div class="level-left">
+                            <div class="level-item">
+                                <span class="tag is-primary is-large">
+                                    <i class="fas fa-question-circle mr-2"></i>
+                                    Questão <span id="questao-atual">1</span> de <span id="total-questoes">30</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="level-right">
+                            <div class="level-item">
+                                <span class="tag is-info is-large">
+                                    <i class="fas fa-clock mr-2"></i>
+                                    <span id="tempo">00:00</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <progress class="progress is-primary" id="barra-progresso" value="1" max="30"></progress>
+                </div>
+
+                <!-- Card da questão -->
+                <div class="columns is-centered">
+                    <div class="column is-10">
+                        <div class="modern-card card" id="card-questao">
+                            <div class="card-header">
+                                <div class="card-header-title is-size-5">
+                                    <i class="fas fa-lightbulb has-text-warning mr-2"></i>
+                                    <span id="titulo-questao">Questão 1</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <p class="is-size-4 has-text-weight-medium mb-5" id="texto-questao">
+                                        Carregando questão...
+                                    </p>
+                                    
+                                    <div id="opcoes-questao">
+                                        <!-- Opções serão inseridas aqui pelo JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botões de navegação -->
+                        <div class="field is-grouped is-grouped-centered mt-5">
+                            <div class="control">
+                                <button class="button is-light is-large nav-button" id="btn-anterior" onclick="questaoAnterior()" disabled>
+                                    <i class="fas fa-chevron-left mr-2"></i>
+                                    <strong>Anterior</strong>
+                                </button>
+                            </div>
+                            <div class="control">
+                                <button class="button is-primary is-large nav-button" id="btn-proxima" onclick="proximaQuestao()">
+                                    <strong>Próxima</strong>
+                                    <i class="fas fa-chevron-right ml-2"></i>
+                                </button>
+                            </div>
+                            <div class="control">
+                                <button class="button is-success is-large nav-button hidden" id="btn-finalizar" onclick="finalizarSimulado()">
+                                    <i class="fas fa-flag-checkered mr-2"></i>
+                                    <strong>Finalizar</strong>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tela de resultados -->
+        <section class="section hidden" id="tela-resultado">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-10">
+                        <div class="modern-card card fade-in">
+                            <div class="card-content result-container">
+                                
+                                <!-- Título e ícone -->
+                                <div class="mb-5">
+                                    <i id="icone-resultado" class="fas fa-trophy has-text-warning" style="font-size: 4rem;"></i>
+                                    <h2 class="title is-1 mt-3" id="titulo-resultado">Parabéns!</h2>
+                                    <p class="subtitle is-4" id="subtitulo-resultado">Você foi aprovado!</p>
+                                </div>
+
+                                <!-- Círculo de pontuação -->
+                                <div class="score-circle approved" id="circulo-pontuacao">
+                                    <span id="pontuacao-display">0/30</span>
+                                </div>
+
+                                <!-- Estatísticas -->
+                                <div class="columns is-multiline mt-5">
+                                    <div class="column is-3">
+                                        <div class="stat-card">
+                                            <div class="stat-number has-text-success" id="total-acertos">0</div>
+                                            <p class="heading">
+                                                <i class="fas fa-check-circle mr-1"></i>
+                                                Acertos
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="column is-3">
+                                        <div class="stat-card">
+                                            <div class="stat-number has-text-danger" id="total-erros">0</div>
+                                            <p class="heading">
+                                                <i class="fas fa-times-circle mr-1"></i>
+                                                Erros
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="column is-3">
+                                        <div class="stat-card">
+                                            <div class="stat-number has-text-info" id="percentual">0%</div>
+                                            <p class="heading">
+                                                <i class="fas fa-percentage mr-1"></i>
+                                                Aproveitamento
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="column is-3">
+                                        <div class="stat-card">
+                                            <div class="stat-number has-text-primary" id="tempo-total">0min</div>
+                                            <p class="heading">
+                                                <i class="fas fa-stopwatch mr-1"></i>
+                                                Tempo Total
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Informação adicional -->
+                                <div class="columns is-centered mt-4">
+                                    <div class="column is-8">
+                                        <div class="box has-background-info-light has-text-centered">
+                                            <p class="is-size-6 has-text-weight-semibold mb-2">
+                                                <i class="fas fa-info-circle mr-2"></i>
+                                                <span class="has-text-info">Critério de Aprovação</span>
+                                            </p>
+                                            <p class="is-size-6">
+                                                Para ser aprovado no exame teórico do DETRAN, é necessário acertar pelo menos 
+                                                <strong>21 questões (70%)</strong> de um total de 30 questões.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mensagem de status -->
+                                <div class="notification mt-5" id="status-aprovacao">
+                                    <p class="is-size-5" id="mensagem-aprovacao"></p>
+                                </div>
+                                
+                                <!-- Botões de ação -->
+                                <div class="field is-grouped is-grouped-centered mt-5">
+                                    <div class="control">
+                                        <button class="button is-primary is-large nav-button" onclick="reiniciarSimulado()">
+                                            <i class="fas fa-redo mr-2"></i>
+                                            <strong>Fazer Novamente</strong>
+                                        </button>
+                                    </div>
+                                    <div class="control">
+                                        <button class="button is-info is-large nav-button" onclick="verRevisao()">
+                                            <i class="fas fa-search mr-2"></i>
+                                            <strong>Ver Revisão</strong>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tela de revisão -->
+        <section class="section hidden" id="tela-revisao">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-12">
+                        <div class="modern-card card fade-in">
+                            <div class="card-header">
+                                <div class="card-header-title is-size-4">
+                                    <i class="fas fa-clipboard-list mr-2"></i>
+                                    Revisão Detalhada das Questões
+                                </div>
+                                <div class="card-header-icon">
+                                    <button class="button is-primary nav-button" onclick="voltarResultado()">
+                                        <i class="fas fa-arrow-left mr-2"></i>
+                                        Voltar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div id="lista-revisao">
+                                    <!-- Lista de revisão será inserida aqui -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-4">
+                        <h5 class="title is-5 has-text-white">
+                            <i class="fas fa-car mr-2"></i>
+                            Simulado DETRAN
+                        </h5>
+                        <p>Prepare-se para a prova teórica com nosso simulado completo e atualizado.</p>
+                    </div>
+                    <div class="column is-4">
+                        <h6 class="title is-6 has-text-white">Links Úteis</h6>
+                        <p><a href="#"><i class="fas fa-home mr-2"></i>Início</a></p>
+                        <p><a href="#"><i class="fas fa-info-circle mr-2"></i>Sobre</a></p>
+                        <p><a href="#"><i class="fas fa-envelope mr-2"></i>Contato</a></p>
+                    </div>
+                    <div class="column is-4">
+                        <h6 class="title is-6 has-text-white">Informações</h6>
+                        <p><i class="fas fa-calendar mr-2"></i>Atualizado em 2025</p>
+                        <p><i class="fas fa-shield-alt mr-2"></i>Apenas para fins educativos</p>
+                        <p><i class="fas fa-heart mr-2"></i>Feito com dedicação</p>
+                    </div>
+                </div>
+                <hr style="background-color: rgba(255,255,255,0.2);">
+                <p>
+                    <strong class="has-text-white">Simulado DETRAN 2025</strong> - 
+                    Todos os direitos reservados. Este simulado é apenas para fins educativos.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript será carregado externamente -->
+    <script src="script.js"></script>
+</body>
+</html>
+
