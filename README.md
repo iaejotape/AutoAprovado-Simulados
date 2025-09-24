@@ -66,7 +66,7 @@ O objetivo do **AutoAprovado** é ajudar candidatos a obter a **CNH (Carteira Na
 * 📈 Estatísticas de desempenho e histórico de simulados.
 * 🌙 Modo escuro para melhor acessibilidade.
 
-* ## 📄 Licença  
+## 📄 Licença  
 
 Este projeto é **proprietário**.  
 📌 Todos os direitos reservados.  
