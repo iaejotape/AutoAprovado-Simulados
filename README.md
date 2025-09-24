@@ -1,40 +1,67 @@
-# AutoAprovado-Simulados
-🚦 AutoAprovado — Simulado Detran Online
+# 🚦 AutoAprovado — Simulados do Detran Online
 
-O AutoAprovado é uma plataforma web interativa para quem deseja se preparar para a prova teórica do Detran de forma prática, rápida e eficiente.
-O projeto foi desenvolvido com HTML, JavaScript e Bulma CSS, garantindo um design moderno, responsivo e fácil de usar em qualquer dispositivo.
+O **AutoAprovado** é uma plataforma web interativa desenvolvida para ajudar candidatos a se prepararem para a prova teórica do **Detran** de maneira prática, rápida e eficiente.
+Construído com **HTML5, JavaScript** e **Bulma CSS**, o projeto entrega uma experiência moderna, responsiva e acessível em qualquer dispositivo.
 
-✨ Funcionalidades
+---
 
-📚 Simulados interativos com perguntas de múltipla escolha.
+## ✨ Funcionalidades
 
-🎨 Interface moderna construída com Bulma CSS
-.
+* 📚 **Simulados interativos** com perguntas de múltipla escolha.
+* 🎨 **Interface moderna** construída com Bulma CSS.
+* 📊 **Barra de progresso** e contador de questões.
+* ✅ **Feedback visual imediato** para respostas corretas e incorretas.
+* 🏆 **Tela de resultados** com pontuação final e opção de refazer o simulado.
+* 📱 **Design responsivo**, funcionando perfeitamente em desktop, tablet e celular.
 
-📊 Barra de progresso e contador de questões.
+---
 
-✅ Feedback visual imediato para respostas corretas e incorretas.
+## 📸 Prévia do Projeto
 
-🏆 Tela de resultados com pontuação final e opção de refazer o simulado.
+### Simulado em andamento
 
-📱 Design responsivo, funcionando bem em desktop, tablet e celular.
+<img width="727" height="417" alt="image" src="https://github.com/user-attachments/assets/df182eee-7352-4cca-9339-2cbc098ed0a0" />
 
-🚀 Tecnologias usadas
+### Interface limpa e moderna
 
-HTML5
+<img width="727" height="417" alt="image" src="https://github.com/user-attachments/assets/a86df5bd-c298-418c-bc90-455742b1e7df" />
 
-CSS3 (Bulma CSS)
+### Barra de progresso
 
-JavaScript (puro)
+<img width="727" height="108" alt="image" src="https://github.com/user-attachments/assets/888d0d01-c83b-49a4-8232-66ea3da4b55e" />
 
-🎯 Objetivo
+### Feedback imediato
 
-Ajudar candidatos a obter sua CNH (Carteira Nacional de Habilitação) com mais segurança e confiança, oferecendo uma forma de estudo online prática e acessível.
+<img width="727" height="519" alt="image" src="https://github.com/user-attachments/assets/0c907e97-95b3-4b82-871f-ece08eaafa20" />
 
-📌 Próximos passos
+### Tela de resultados
 
-Integração com backend para salvar resultados.
+<img width="727" height="766" alt="image" src="https://github.com/user-attachments/assets/8fd8fd8d-d86b-46f7-855d-22d8466bfdce" />
 
-Banco de dados com mais questões.
+### Layout responsivo
 
-Criação de ranking entre usuários.
+<img width="383" height="829" alt="image" src="https://github.com/user-attachments/assets/babf574d-5730-44da-aa85-d3ca42eed685" />
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+* **HTML5**
+* **CSS3 (Bulma CSS)**
+* **JavaScript**
+
+---
+
+## 🎯 Objetivo
+
+O objetivo do **AutoAprovado** é ajudar candidatos a obter a **CNH (Carteira Nacional de Habilitação)** com mais segurança e confiança, oferecendo uma forma de estudo online acessível, prática e eficiente.
+
+---
+
+## 📌 Roadmap / Próximos Passos
+
+* 🔑 Sistema de **cadastro e login**.
+* 💾 Integração com **backend** para salvar resultados.
+* 📚 Banco de dados com mais questões.
+* 📈 Estatísticas de desempenho e histórico de simulados.
+* 🌙 Modo escuro para melhor acessibilidade.
