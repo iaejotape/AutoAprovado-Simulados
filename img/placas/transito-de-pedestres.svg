@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect x="30" y="30" width="140" height="140" rx="12" transform="rotate(45 100 100)" fill="#FFC400"/>
+  <rect x="39" y="39" width="122" height="122" rx="8" transform="rotate(45 100 100)" fill="none" stroke="#111" stroke-width="5"/>
+  <g fill="#111" transform="translate(100 100) scale(1.35) translate(-65 -150)"><circle cx="68" cy="118" r="8"/><path d="M60 130h14l9 16-6 3-6-10-2 14 10 22-7 3-11-22-9 22-7-3 11-27 2-11-7 8-6-4z"/></g>
+</svg>

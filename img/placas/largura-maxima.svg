@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="85" fill="#fff" stroke="#D0111B" stroke-width="20"/>
+  <text x="100" y="111" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#111">2,5m</text><path d="M38 82v36l22-18zM162 82v36l-22-18z" fill="#111"/>
+</svg>

@@ -3,230 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulado DETRAN - Prova Teórica 2025</title>
-    <link rel="icon" href="./img/logo-page.png" type="image/x-icon">
+    <title>AutoAprovado | Simulado da prova teórica do Detran</title>
+    <link rel="icon" type="image/svg+xml" href="./img/icone.svg">
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     
     <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
+    <!-- Fontes da tela de questão -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Overpass:wght@600;800&display=swap">
+
     <style>
         /* Estilos customizados */
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --carro: 44px;
+            --asfalto: #1E2227;
+            --asfalto-claro: #343A42;
+            --branco-faixa: #F7F7F2;
+            --amarelo-sinal: #FFC400;
+            --azul-sinal: #0B5CAD;
+            --verde-sinal: #12864A;
+            --vermelho-sinal: #C8102E;
+            --texto-apoio: #565C63;
+            --borda-suave: #DADBD3;
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--branco-faixa);
             min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--asfalto);
+            font-family: 'Atkinson Hyperlegible', 'Segoe UI', Tahoma, sans-serif;
         }
 
-        /* Header personalizado */
-        .navbar {
-            background: var(--primary-gradient) !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            min-height: 80px !important;
-            z-index: 1000 !important;
+        main {
+            margin-top: 64px;
         }
 
-        .navbar-brand .title {
-            background: linear-gradient(45deg, #fff, #f0f0f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-item {
-            padding: 0.5rem 0.75rem !important;
-        }
-
-        .navbar-brand .navbar-item {
-            display: flex !important;
-            align-items: center !important;
-            min-height: 80px !important;
-        }
-
-        /* Cards com efeitos modernos */
-        .modern-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-        }
-
-        .modern-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Botões de opção modernos */
-        .option-button {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid #e1e5e9;
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            margin-bottom: 0.75rem;
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .option-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s;
-        }
-
-        .option-button:hover::before {
-            left: 100%;
-        }
-
-        .option-button:hover {
-            transform: translateX(5px);
-            border-color: #3273dc;
-            box-shadow: 0 4px 15px rgba(50, 115, 220, 0.2);
-        }
-
-        .option-button.selected {
-            background: linear-gradient(135deg, #3273dc, #4285f4);
-            color: white;
-            border-color: #3273dc;
-            transform: scale(1.02);
-        }
-
-
-
-        /* Barra de progresso personalizada */
-        .progress-container {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--card-shadow);
-        }
-
-        .progress.is-primary {
-            background: linear-gradient(90deg, #e1e5e9, #f5f5f5);
-            border-radius: 10px;
-            height: 12px;
-        }
-
-        .progress.is-primary::-webkit-progress-value {
-            background: var(--primary-gradient);
-            border-radius: 10px;
-            transition: var(--transition);
-        }
-
-        .progress.is-primary::-moz-progress-bar {
-            background: var(--primary-gradient);
-            border-radius: 10px;
-        }
-
-        /* Botões de navegação */
-        .nav-button {
-            border-radius: 12px;
-            padding: 0.75rem 2rem;
-            font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s;
-        }
-
-        .nav-button:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        /* Tela de resultados */
-        .result-container {
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        .score-circle {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 2rem auto;
+        /* Menu */
+        .barra-topo {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            font-weight: bold;
-            color: white;
-            position: relative;
-            overflow: hidden;
+            min-height: 64px;
+            padding: 0 1rem;
+            background: var(--asfalto);
         }
 
-        .score-circle.approved {
-            background: linear-gradient(135deg, #48c774, #4caf50);
-            animation: approvedGlow 2s ease-in-out infinite alternate;
+        .barra-topo-interna {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
         }
 
-        .score-circle.failed {
-            background: linear-gradient(135deg, #f14668, #e91e63);
-            animation: failedPulse 1.5s ease-in-out infinite;
+        .marca {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fff;
+            font-family: 'Overpass', sans-serif;
+            font-size: 1.375rem;
+            font-weight: 800;
         }
 
-        @keyframes approvedGlow {
-            0% { box-shadow: 0 0 20px rgba(72, 199, 116, 0.5); }
-            100% { box-shadow: 0 0 40px rgba(72, 199, 116, 0.8); }
+        .marca:hover {
+            color: #fff;
         }
 
-        @keyframes failedPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .marca span {
+            color: var(--amarelo-sinal);
         }
 
-        /* Estatísticas */
-        .stat-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+        .marca svg {
+            width: 36px;
+            height: 18px;
         }
 
         /* Animações de transição */
@@ -257,18 +111,998 @@
             to { opacity: 1; transform: translateX(0); }
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .score-circle {
-                width: 150px;
-                height: 150px;
-                font-size: 2rem;
+        /* Tela de questão: modo foco */
+        body.em-simulado .navbar,
+        body.em-simulado .footer {
+            display: none !important;
+        }
+
+        body.em-simulado main {
+            margin-top: 0;
+        }
+
+        /* A doca é fixa: transform na seção a tiraria do lugar durante a animação */
+        #tela-simulado.slide-in-left,
+        #tela-simulado.slide-in-right {
+            animation: none;
+        }
+
+        #tela-simulado :focus-visible {
+            outline: 3px solid var(--amarelo-sinal);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 2px var(--asfalto);
+        }
+
+        /* Painel com a estrada */
+        .painel-rota {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--asfalto);
+            color: #fff;
+        }
+
+        .painel-rota-interno,
+        .conteudo-questao,
+        .barra-acoes-interna,
+        .painel-correcao {
+            width: 100%;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .painel-rota-interno {
+            padding: 0.625rem 1rem 0.5rem;
+        }
+
+        .painel-topo {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .botao-sair {
+            justify-self: start;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            min-height: 40px;
+            padding: 0 0.5rem;
+            margin-left: -0.5rem;
+            background: none;
+            border: 0;
+            border-radius: 8px;
+            color: #D5D8DC;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .contador-questao {
+            text-align: center;
+            font-family: 'Overpass', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .contador-questao strong {
+            color: var(--amarelo-sinal);
+            font-weight: 800;
+        }
+
+        .rotulo-modo {
+            display: block;
+            color: #D5D8DC;
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .cronometro {
+            justify-self: end;
+            color: #D5D8DC;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .estrada {
+            --avanco: 0;
+            position: relative;
+            height: 38px;
+            overflow: hidden;
+            background: var(--asfalto-claro);
+            border-top: 2px solid var(--branco-faixa);
+            border-bottom: 2px solid var(--branco-faixa);
+        }
+
+        .estrada-percorrida {
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: calc(var(--avanco) * (100% - var(--carro) - 4px) + var(--carro) / 2 + 2px);
+            background: rgba(255, 196, 0, 0.18);
+            transition: width 0.3s ease-out;
+        }
+
+        .faixa-central {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            margin-top: -1px;
+            background: repeating-linear-gradient(90deg, var(--amarelo-sinal) 0 14px, transparent 14px 26px);
+        }
+
+        .linha-chegada {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 10px;
+            background: repeating-conic-gradient(#fff 0 25%, var(--asfalto) 0 50%) 0 0 / 10px 10px;
+        }
+
+        .carro {
+            position: absolute;
+            top: 50%;
+            left: calc(var(--avanco) * (100% - var(--carro) - 4px) + 2px);
+            width: var(--carro);
+            height: calc(var(--carro) / 2);
+            margin-top: calc(var(--carro) / -4);
+            transition: left 0.3s ease-out;
+        }
+
+        .carro.desvio {
+            animation: desvioCarro 0.5s ease-in-out;
+        }
+
+        @keyframes desvioCarro {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            35% { transform: translateY(-7px) rotate(-10deg); }
+            70% { transform: translateY(5px) rotate(6deg); }
+        }
+
+        .marcos {
+            position: relative;
+            height: 1.125rem;
+            color: #D5D8DC;
+            font-family: 'Overpass', sans-serif;
+            font-size: 0.75rem;
+        }
+
+        .marcos span {
+            position: absolute;
+            top: 0.125rem;
+            left: calc(var(--marco) * (100% - var(--carro) - 4px) + var(--carro) / 2 + 2px);
+            transform: translateX(-50%);
+        }
+
+        /* Questão e alternativas */
+        .conteudo-questao {
+            padding: 1.25rem 1rem;
+        }
+
+        .cartao-questao {
+            margin-bottom: 1rem;
+            padding: 1.25rem;
+            background: #fff;
+            border: 1px solid var(--borda-suave);
+            border-radius: 16px;
+        }
+
+        .questao-imagem {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .questao-imagem img {
+            max-width: 220px;
+            max-height: 170px;
+            border-radius: 8px;
+        }
+
+        .tema-questao {
+            margin-bottom: 0.375rem;
+            color: var(--texto-apoio);
+            font-family: 'Overpass', sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        #texto-questao {
+            font-size: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        #texto-questao:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        #opcoes-questao {
+            display: grid;
+            gap: 0.625rem;
+        }
+
+        #opcoes-questao .option-button {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.75rem;
+            width: 100%;
+            height: auto;
+            min-height: 56px;
+            padding: 0.625rem 0.875rem;
+            background: #fff;
+            border: 2px solid var(--borda-suave);
+            border-radius: 14px;
+            color: var(--asfalto);
+            font-size: 1.0625rem;
+            line-height: 1.3;
+            text-align: left;
+            white-space: normal;
+            transition: border-color 0.15s, background-color 0.15s;
+        }
+
+        .opcao-letra {
+            flex: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--branco-faixa);
+            border: 2px solid var(--asfalto);
+            border-radius: 50%;
+            font-family: 'Overpass', sans-serif;
+            font-weight: 800;
+        }
+
+        .opcao-texto {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .opcao-marca {
+            flex: none;
+            font-size: 1.25rem;
+        }
+
+        #opcoes-questao .option-button.selected {
+            background: #FFF8DB;
+            border-color: var(--asfalto);
+        }
+
+        #opcoes-questao .option-button.selected .opcao-letra {
+            background: var(--amarelo-sinal);
+        }
+
+        #opcoes-questao .option-button[disabled] {
+            opacity: 1;
+            color: var(--texto-apoio);
+            cursor: default;
+        }
+
+        #opcoes-questao .option-button.correta {
+            background: #E6F4EC;
+            border-color: var(--verde-sinal);
+            color: var(--asfalto);
+        }
+
+        #opcoes-questao .option-button.errada {
+            background: #FBE9EC;
+            border-color: var(--vermelho-sinal);
+            color: var(--asfalto);
+        }
+
+        .option-button.correta .opcao-letra,
+        .option-button.correta .opcao-marca {
+            border-color: var(--verde-sinal);
+            color: var(--verde-sinal);
+        }
+
+        .option-button.errada .opcao-letra,
+        .option-button.errada .opcao-marca {
+            border-color: var(--vermelho-sinal);
+            color: var(--vermelho-sinal);
+        }
+
+        /* Certeza ou chute */
+        .seletor-certeza {
+            margin-top: 1rem;
+        }
+
+        .seletor-certeza-rotulo {
+            margin-bottom: 0.5rem;
+            color: var(--texto-apoio);
+        }
+
+        .seletor-certeza-botoes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.625rem;
+        }
+
+        .botao-certeza {
+            min-height: 48px;
+            padding: 0.5rem;
+            background: #fff;
+            border: 2px solid var(--asfalto);
+            border-radius: 12px;
+            color: var(--asfalto);
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .botao-certeza[aria-pressed="true"] {
+            background: var(--asfalto);
+            color: #fff;
+        }
+
+        .atalho {
+            display: none;
+            margin-left: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 400;
+            opacity: 0.75;
+        }
+
+        /* Doca inferior: correção e navegação */
+        .doca-questao {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 20;
+        }
+
+        .painel-correcao {
+            max-height: 42vh;
+            overflow-y: auto;
+            padding: 1rem;
+            background: #fff;
+            border-top: 6px solid var(--verde-sinal);
+            border-radius: 18px 18px 0 0;
+            box-shadow: 0 -8px 24px rgba(30, 34, 39, 0.18);
+            animation: subirPainel 0.25s ease-out;
+        }
+
+        .painel-correcao.errou {
+            border-top-color: var(--vermelho-sinal);
+        }
+
+        @keyframes subirPainel {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .correcao-titulo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+            color: var(--verde-sinal);
+            font-family: 'Overpass', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .painel-correcao.errou .correcao-titulo {
+            color: var(--vermelho-sinal);
+        }
+
+        .correcao-nota {
+            margin-bottom: 0.625rem;
+        }
+
+        .correcao-resposta {
+            margin-top: 0.375rem;
+        }
+
+        .correcao-explicacao {
+            margin-top: 0.625rem;
+            padding-top: 0.625rem;
+            border-top: 1px solid var(--borda-suave);
+        }
+
+        .barra-acoes {
+            padding: 0.625rem 1rem calc(0.625rem + env(safe-area-inset-bottom));
+            background: #fff;
+            border-top: 1px solid var(--borda-suave);
+        }
+
+        .barra-acoes-interna {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.625rem;
+        }
+
+        .botao-rota {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-height: 52px;
+            padding: 0 1.125rem;
+            border: 2px solid var(--asfalto);
+            border-radius: 999px;
+            font-family: 'Overpass', sans-serif;
+            font-size: 1.0625rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .botao-rota.secundario {
+            background: #fff;
+            color: var(--asfalto);
+        }
+
+        .botao-rota.principal {
+            background: var(--amarelo-sinal);
+            color: var(--asfalto);
+        }
+
+        .botao-rota[disabled] {
+            background: #ECECE6;
+            border-color: #ECECE6;
+            color: var(--texto-apoio);
+            cursor: not-allowed;
+        }
+
+        @media (hover: hover) {
+            #opcoes-questao .option-button:not([disabled]):hover {
+                border-color: var(--asfalto);
             }
-            
-            .option-button {
-                padding: 0.75rem 1rem;
-                font-size: 0.9rem;
+
+            .botao-sair:hover {
+                color: #fff;
             }
+
+            .botao-rota.principal:not([disabled]):hover {
+                background: #FFD23F;
+            }
+
+            .botao-certeza:not([aria-pressed="true"]):hover {
+                background: #FFF8DB;
+            }
+
+            .atalho {
+                display: inline;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* Tela inicial */
+        #tela-inicial {
+            --carro: 64px;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 64px);
+            min-height: calc(100svh - 64px);
+            background: var(--asfalto);
+            color: #fff;
+        }
+
+        #tela-inicial.slide-in-left,
+        #tela-inicial.slide-in-right,
+        #tela-resultado.slide-in-left,
+        #tela-resultado.slide-in-right {
+            animation: none;
+        }
+
+        #tela-inicial :focus-visible {
+            outline: 3px solid var(--amarelo-sinal);
+            outline-offset: 3px;
+        }
+
+        .inicio-conteudo {
+            flex: 1;
+            display: grid;
+            gap: 1.75rem;
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 1.25rem 1rem 2rem;
+        }
+
+        .inicio-titulo {
+            margin-bottom: 0.875rem;
+            color: #fff;
+            font-family: 'Overpass', sans-serif;
+            font-size: clamp(2.5rem, 1.5rem + 4.2vw, 4.75rem);
+            font-weight: 800;
+            line-height: 1.04;
+        }
+
+        .inicio-titulo span {
+            color: var(--amarelo-sinal);
+        }
+
+        .inicio-resumo {
+            max-width: 34rem;
+            color: #D5D8DC;
+            font-size: 1.125rem;
+            line-height: 1.45;
+        }
+
+        .fatos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+
+        .fatos li {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            color: #D5D8DC;
+            line-height: 1.2;
+        }
+
+        .sinal-fato {
+            flex: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 58px;
+            height: 58px;
+            background: #fff;
+            border: 6px solid var(--vermelho-sinal);
+            border-radius: 50%;
+            color: #111;
+            font-family: 'Overpass', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .placas-rota {
+            position: relative;
+            display: grid;
+            align-content: center;
+            gap: 0.875rem;
+        }
+
+        .placa-rota {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            padding: 1.125rem 1.375rem;
+            border: 0;
+            border-radius: 10px;
+            color: #fff;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+            transition: transform 0.15s ease-out;
+        }
+
+        .placa-rota::before {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border: 2px solid #fff;
+            border-radius: 6px;
+            pointer-events: none;
+        }
+
+        .placa-verde {
+            background: #0E6B3C;
+        }
+
+        .placa-azul {
+            background: var(--azul-sinal);
+        }
+
+        .placa-nome {
+            display: block;
+            font-family: 'Overpass', sans-serif;
+            font-size: 1.875rem;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+
+        .placa-detalhe {
+            display: block;
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+
+        .placa-rota i {
+            font-size: 1.75rem;
+        }
+
+        .estrada-inicio {
+            height: 68px;
+            border-top-width: 3px;
+            border-bottom-width: 3px;
+        }
+
+        .estrada-inicio .faixa-central {
+            height: 3px;
+            background: repeating-linear-gradient(90deg, var(--amarelo-sinal) 0 28px, transparent 28px 52px);
+        }
+
+        .estrada-inicio .linha-chegada {
+            width: 20px;
+            background-size: 20px 20px;
+        }
+
+        .estrada-inicio .carro {
+            animation: entrarCarro 1.3s ease-out;
+        }
+
+        @keyframes entrarCarro {
+            from { left: calc(var(--carro) * -1.2); }
+        }
+
+        .marcos-inicio {
+            height: 2rem;
+            font-size: 0.875rem;
+        }
+
+        .marcos-inicio span {
+            top: 0.375rem;
+            white-space: nowrap;
+        }
+
+        .marcos-inicio strong {
+            color: var(--amarelo-sinal);
+            font-weight: 800;
+        }
+
+        @media (hover: hover) {
+            .placa-rota:hover {
+                transform: translateY(-3px);
+            }
+        }
+
+        @media (min-width: 900px) {
+            #tela-inicial {
+                --carro: 96px;
+            }
+
+            .inicio-conteudo {
+                grid-template-columns: 1.3fr 1fr;
+                grid-template-rows: 1fr auto;
+                gap: 2.5rem 4rem;
+                padding-top: 2rem;
+                padding-bottom: 0;
+            }
+
+            .inicio-chamada {
+                align-self: end;
+            }
+
+            .placas-rota {
+                grid-column: 2;
+                grid-row: 1 / 3;
+            }
+
+            .fatos {
+                gap: 1.25rem;
+                padding-bottom: 2.5rem;
+            }
+
+            .fatos li {
+                flex-direction: row;
+                align-items: center;
+                gap: 0.625rem;
+            }
+
+            /* Poste que segura as placas até a estrada */
+            .placas-rota::before {
+                content: '';
+                position: absolute;
+                top: 25%;
+                bottom: 0;
+                left: 50%;
+                width: 16px;
+                margin-left: -8px;
+                background: #7D848C;
+            }
+
+            .placa-rota {
+                padding: 1.5rem 1.75rem;
+            }
+
+            .placa-nome {
+                font-size: 2.25rem;
+            }
+
+            .estrada-inicio {
+                height: 84px;
+            }
+        }
+
+        /* Aviso de saída */
+        .dialogo-sair {
+            width: calc(100% - 2rem);
+            max-width: 420px;
+            margin: auto;
+            padding: 1.5rem;
+            border: 0;
+            border-top: 6px solid var(--amarelo-sinal);
+            border-radius: 16px;
+            color: var(--asfalto);
+        }
+
+        .dialogo-sair::backdrop {
+            background: rgba(30, 34, 39, 0.65);
+        }
+
+        .dialogo-sair h2 {
+            margin-bottom: 0.375rem;
+            font-family: 'Overpass', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .dialogo-sair p {
+            margin-bottom: 1.25rem;
+        }
+
+        .dialogo-acoes {
+            display: grid;
+            gap: 0.625rem;
+        }
+
+        .dialogo-acoes .botao-rota {
+            width: 100%;
+        }
+
+        /* Tela de resultado */
+        #tela-resultado {
+            --carro: 64px;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 64px);
+            min-height: calc(100svh - 64px);
+            background: var(--asfalto);
+            color: #fff;
+        }
+
+        #tela-resultado :focus-visible {
+            outline: 3px solid var(--amarelo-sinal);
+            outline-offset: 3px;
+        }
+
+        .resultado-conteudo {
+            flex: 1;
+            display: grid;
+            align-content: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 2rem;
+        }
+
+        .resultado-topo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .sinal-pontuacao {
+            flex: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 112px;
+            height: 112px;
+            background: #fff;
+            border: 11px solid var(--vermelho-sinal);
+            border-radius: 50%;
+            color: #111;
+            font-family: 'Overpass', sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .sinal-pontuacao strong {
+            color: inherit;
+            font-size: 2.25rem;
+            font-weight: 800;
+        }
+
+        .sinal-pontuacao.aprovado {
+            border-color: var(--verde-sinal);
+        }
+
+        .resultado-titulo {
+            color: #fff;
+            font-family: 'Overpass', sans-serif;
+            font-size: clamp(2.25rem, 1.5rem + 3.6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.04;
+        }
+
+        .resultado-titulo.aprovado {
+            color: var(--amarelo-sinal);
+        }
+
+        .resultado-titulo:focus {
+            outline: none !important;
+        }
+
+        .resultado-acoes {
+            display: grid;
+            gap: 0.625rem;
+            margin-top: 1.5rem;
+        }
+
+        .resultado-dados {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .resultado-dados div {
+            padding-top: 0.625rem;
+            border-top: 2px solid #565C63;
+        }
+
+        .resultado-dados dt {
+            color: #D5D8DC;
+        }
+
+        .resultado-dados dd {
+            color: #fff;
+            font-family: 'Overpass', sans-serif;
+            font-size: 1.875rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        /* Marca dos 20 acertos na pista */
+        .marca-aprovacao {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: calc(0.6667 * (100% - var(--carro) - 4px) + var(--carro) / 2 + 2px);
+            width: 4px;
+            margin-left: -2px;
+            background: #fff;
+        }
+
+        @media (min-width: 900px) {
+            #tela-resultado {
+                --carro: 96px;
+            }
+
+            .resultado-conteudo {
+                grid-template-columns: 1.5fr 1fr;
+                align-items: center;
+                gap: 4rem;
+            }
+
+            .sinal-pontuacao {
+                width: 168px;
+                height: 168px;
+                border-width: 16px;
+                font-size: 1rem;
+            }
+
+            .sinal-pontuacao strong {
+                font-size: 3.5rem;
+            }
+
+            .resultado-topo {
+                gap: 1.75rem;
+            }
+
+            .resultado-acoes {
+                display: flex;
+            }
+
+            .resultado-acoes .botao-rota {
+                padding: 0 1.75rem;
+            }
+        }
+
+        /* Tela de revisão */
+        .revisao-conteudo {
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+        }
+
+        .revisao-cabecalho {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .revisao-titulo {
+            font-family: 'Overpass', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .item-revisao {
+            margin-bottom: 0.75rem;
+            padding: 1.125rem 1.25rem;
+            background: #fff;
+            border: 1px solid var(--borda-suave);
+            border-radius: 16px;
+        }
+
+        .item-revisao-topo {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem 0.75rem;
+            margin-bottom: 0.625rem;
+            font-family: 'Overpass', sans-serif;
+            font-weight: 800;
+        }
+
+        .item-revisao-numero {
+            color: var(--texto-apoio);
+            font-weight: 600;
+        }
+
+        .item-revisao.acertou .item-revisao-status {
+            color: var(--verde-sinal);
+        }
+
+        .item-revisao.errou .item-revisao-status {
+            color: var(--vermelho-sinal);
+        }
+
+        .item-revisao-chute {
+            padding: 0.125rem 0.625rem;
+            background: var(--amarelo-sinal);
+            border-radius: 999px;
+            font-size: 0.875rem;
+        }
+
+        .item-revisao-pergunta {
+            margin-bottom: 0.625rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .item-revisao-imagem {
+            display: block;
+            max-width: 160px;
+            max-height: 120px;
+            margin-bottom: 0.625rem;
+            border-radius: 8px;
+        }
+
+        .item-revisao-resposta {
+            margin-top: 0.25rem;
+        }
+
+        .item-revisao-explicacao {
+            margin-top: 0.625rem;
+            padding-top: 0.625rem;
+            border-top: 1px solid var(--borda-suave);
         }
 
         /* Utilitários */
@@ -276,325 +1110,254 @@
             display: none !important;
         }
 
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
         /* Footer */
         .footer {
-            background: var(--primary-gradient);
-            color: white;
-            margin-top: 4rem;
+            background: #14171B;
+            color: #fff;
         }
 
         .footer a {
-            color: rgba(255, 255, 255, 0.8);
+            color: #D5D8DC;
             transition: var(--transition);
         }
 
         .footer a:hover {
-            color: white;
-            transform: translateY(-2px);
+            color: var(--amarelo-sinal);
         }
     </style>
 </head>
 <body>
     <!-- Header fixo -->
-    <nav class="navbar is-fixed-top" role="navigation">
-        <div class="navbar-brand">
-            <div class="navbar-item">
-                <h1 class="title is-4">
-                    <img src="./img/logo.png" alt="Logo AutoAprovado" style="height: 50px !important; width: auto !important; max-height: none !important;">
-                </h1>
-            </div>
-        </div>
-        
-        <div class="navbar-menu">
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <button class="button is-light nav-button" id="btn-iniciar" onclick="iniciarSimulado()">
-                        <i class="fas fa-play mr-2"></i>
-                        Iniciar Simulado
-                    </button>
-                </div>
-            </div>
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+        <symbol id="desenho-carro" viewBox="0 0 64 32">
+            <rect x="10" y="1" width="10" height="5" rx="2" fill="#111"/>
+            <rect x="42" y="1" width="10" height="5" rx="2" fill="#111"/>
+            <rect x="10" y="26" width="10" height="5" rx="2" fill="#111"/>
+            <rect x="42" y="26" width="10" height="5" rx="2" fill="#111"/>
+            <rect x="2" y="4" width="60" height="24" rx="9" fill="#FFC400" stroke="#1E2227" stroke-width="2"/>
+            <path d="M40 8h6a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-6z" fill="#1E2227"/>
+            <path d="M20 9h-4a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h4z" fill="#1E2227"/>
+            <rect x="58" y="8" width="3" height="5" rx="1" fill="#fff"/>
+            <rect x="58" y="19" width="3" height="5" rx="1" fill="#fff"/>
+        </symbol>
+    </svg>
+
+    <nav class="navbar is-fixed-top barra-topo" aria-label="Principal">
+        <div class="barra-topo-interna">
+            <a class="marca" href="./">
+                <svg aria-hidden="true"><use href="#desenho-carro"/></svg>
+                <b>Auto<span>Aprovado</span></b>
+            </a>
         </div>
     </nav>
 
     <!-- Conteúdo principal -->
-    <main style="margin-top: 5rem; padding: 2rem 0;">
+    <main>
         
         <!-- Tela inicial -->
-        <section class="section" id="tela-inicial">
-            <div class="container">
-                <div class="columns is-centered">
-                    <div class="column is-8">
-                        <div class="modern-card card fade-in">
-                            <div class="card-content">
-                                <div class="content has-text-centered">
-
-                                    <h2 class="title is-1 has-text-primary mb-2"><img src="./img/logo2.png" alt="logo AutoAprovado"></h2>
-                                    <h3 class="subtitle is-3 has-text-grey">Prova Teórica do Detran 2025</h3>
-                                    
-                                    <div class="box glass-effect my-5">
-                                        <h4 class="title is-4 has-text-primary mb-4">
-                                            <i class="fas fa-info-circle mr-2"></i>
-                                            Instruções
-                                        </h4>
-                                        <div class="columns is-multiline">
-                                            <div class="column is-6">
-                                                <div class="has-text-left">
-                                                    <p class="mb-2">
-                                                        <i class="fas fa-check has-text-success mr-2"></i>
-                                                        <strong>30 questões</strong> de múltipla escolha
-                                                    </p>
-                                                    <p class="mb-2">
-                                                        <i class="fas fa-target has-text-success mr-2"></i>
-                                                        Mínimo <strong>21 acertos (70%)</strong> para aprovação
-                                                    </p>
-                                                    <p class="mb-2">
-                                                        <i class="fas fa-images has-text-success mr-2"></i>
-                                                        Questões com <strong>imagens</strong> de placas e situações
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="column is-6">
-                                                <div class="has-text-left">
-                                                    <p class="mb-2">
-                                                        <i class="fas fa-mouse-pointer has-text-success mr-2"></i>
-                                                        Navegue com os <strong>botões</strong>
-                                                    </p>
-                                                    <p class="mb-2">
-                                                        <i class="fas fa-chart-line has-text-success mr-2"></i>
-                                                        <strong>Resultado detalhado</strong> ao final
-                                                    </p>
-                                                    <p class="mb-2">
-                                                        <i class="fas fa-database has-text-success mr-2"></i>
-                                                        Banco com <strong>50+ questões</strong> variadas
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <button class="button is-primary is-large nav-button" onclick="iniciarSimulado()">
-                                        <i class="fas fa-rocket mr-2"></i>
-                                        <strong>Começar Simulado</strong>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <section id="tela-inicial">
+            <div class="inicio-conteudo">
+                <div class="inicio-chamada">
+                    <h1 class="inicio-titulo">Chegue na prova do Detran <span>sabendo o caminho.</span></h1>
+                    <p class="inicio-resumo">Simulados gratuitos com placas e situações de trânsito. Escolha uma saída e comece agora, sem cadastro.</p>
                 </div>
+
+                <div class="placas-rota">
+                    <button class="placa-rota placa-verde" onclick="iniciarSimulado('treino')">
+                        <span>
+                            <span class="placa-nome">Treino</span>
+                            <span class="placa-detalhe">Corrige na hora, questão por questão</span>
+                        </span>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </button>
+                    <button class="placa-rota placa-azul" onclick="iniciarSimulado('prova')">
+                        <span>
+                            <span class="placa-nome">Prova</span>
+                            <span class="placa-detalhe">Corrige só no final, como no exame</span>
+                        </span>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <ul class="fatos">
+                    <li><span class="sinal-fato">30</span> questões por simulado</li>
+                    <li><span class="sinal-fato">20</span> acertos para passar</li>
+                    <li><span class="sinal-fato">R$0</span> e sem cadastro</li>
+                </ul>
+            </div>
+
+            <div class="estrada estrada-inicio" style="--avanco: 0.6667" aria-hidden="true">
+                <div class="faixa-central"></div>
+                <div class="linha-chegada"></div>
+                <svg class="carro"><use href="#desenho-carro"/></svg>
+            </div>
+            <div class="marcos marcos-inicio" aria-hidden="true">
+                <span style="--marco: 0">Questão 1</span>
+                <span style="--marco: 0.6667"><strong>20 para passar</strong></span>
+                <span style="--marco: 1">30</span>
             </div>
         </section>
 
         <!-- Tela do simulado -->
-        <section class="section hidden" id="tela-simulado">
-            <div class="container">
-                
-                <!-- Barra de progresso -->
-                <div class="progress-container">
-                    <div class="level mb-4">
-                        <div class="level-left">
-                            <div class="level-item">
-                                <span class="tag is-primary is-large">
-                                    <i class="fas fa-question-circle mr-2"></i>
-                                    Questão <span id="questao-atual">1</span> de <span id="total-questoes">30</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="level-right">
-                            <div class="level-item">
-                                <span class="tag is-info is-large">
-                                    <i class="fas fa-clock mr-2"></i>
-                                    <span id="tempo">00:00</span>
-                                </span>
-                            </div>
+        <section class="hidden" id="tela-simulado">
+
+            <!-- Estrada de progresso -->
+            <header class="painel-rota" id="painel-rota">
+                <div class="painel-rota-interno">
+                    <div class="painel-topo">
+                        <button class="botao-sair" onclick="sairDoSimulado()">
+                            <i class="fas fa-xmark" aria-hidden="true"></i>
+                            Sair
+                        </button>
+                        <p class="contador-questao">
+                            <span class="rotulo-modo" id="rotulo-modo">Prova</span>
+                            Questão <strong id="questao-atual">1</strong> de <span id="total-questoes">30</span>
+                        </p>
+                        <span class="cronometro">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            <span id="tempo">00:00</span>
+                        </span>
+                    </div>
+                    <div class="estrada" id="estrada" role="progressbar" aria-label="Progresso do simulado" aria-valuemin="1" aria-valuemax="30" aria-valuenow="1">
+                        <div class="estrada-percorrida"></div>
+                        <div class="faixa-central"></div>
+                        <div class="linha-chegada"></div>
+                        <svg class="carro" id="carro" aria-hidden="true"><use href="#desenho-carro"/></svg>
+                    </div>
+                    <div class="marcos" aria-hidden="true">
+                        <span style="--marco: 0">1</span>
+                        <span style="--marco: 0.3103">10</span>
+                        <span style="--marco: 0.6552">20</span>
+                        <span style="--marco: 1">30</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Questão -->
+            <div class="conteudo-questao" id="conteudo-questao">
+                <div id="card-questao">
+                    <div class="cartao-questao">
+                        <p class="tema-questao" id="tema-questao"></p>
+                        <p id="texto-questao" tabindex="-1">Carregando questão...</p>
+                    </div>
+
+                    <div id="opcoes-questao">
+                        <!-- Opções serão inseridas aqui pelo JavaScript -->
+                    </div>
+
+                    <!-- Certeza ou chute -->
+                    <div class="seletor-certeza hidden" id="seletor-certeza">
+                        <p class="seletor-certeza-rotulo">Para ver a correção, conte como você respondeu:</p>
+                        <div class="seletor-certeza-botoes">
+                            <button class="botao-certeza" id="btn-certeza" onclick="definirCerteza('certeza')">
+                                Tenho certeza<span class="atalho">(C)</span>
+                            </button>
+                            <button class="botao-certeza" id="btn-chute" onclick="definirCerteza('chute')">
+                                Chutei<span class="atalho">(X)</span>
+                            </button>
                         </div>
                     </div>
-                    <progress class="progress is-primary" id="barra-progresso" value="1" max="30"></progress>
                 </div>
+            </div>
 
-                <!-- Card da questão -->
-                <div class="columns is-centered">
-                    <div class="column is-10">
-                        <div class="modern-card card" id="card-questao">
-                            <div class="card-header">
-                                <div class="card-header-title is-size-5">
-                                    <i class="fas fa-lightbulb has-text-warning mr-2"></i>
-                                    <span id="titulo-questao">Questão 1</span>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    <p class="is-size-4 has-text-weight-medium mb-5" id="texto-questao">
-                                        Carregando questão...
-                                    </p>
-                                    
-                                    <div id="opcoes-questao">
-                                        <!-- Opções serão inseridas aqui pelo JavaScript -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Botões de navegação -->
-                        <div class="field is-grouped is-grouped-centered mt-5">
-                            <div class="control">
-                                <button class="button is-light is-large nav-button" id="btn-anterior" onclick="questaoAnterior()" disabled>
-                                    <i class="fas fa-chevron-left mr-2"></i>
-                                    <strong>Anterior</strong>
-                                </button>
-                            </div>
-                            <div class="control">
-                                <button class="button is-primary is-large nav-button" id="btn-proxima" onclick="proximaQuestao()">
-                                    <strong>Próxima</strong>
-                                    <i class="fas fa-chevron-right ml-2"></i>
-                                </button>
-                            </div>
-                            <div class="control">
-                                <button class="button is-success is-large nav-button hidden" id="btn-finalizar" onclick="finalizarSimulado()">
-                                    <i class="fas fa-flag-checkered mr-2"></i>
-                                    <strong>Finalizar</strong>
-                                </button>
-                            </div>
-                        </div>
+            <!-- Correção do treino e navegação -->
+            <div class="doca-questao" id="doca-questao">
+                <div aria-live="polite">
+                    <div class="painel-correcao hidden" id="painel-correcao">
+                        <h3 class="correcao-titulo">
+                            <i id="correcao-icone" aria-hidden="true"></i>
+                            <span id="correcao-titulo"></span>
+                        </h3>
+                        <p class="correcao-nota" id="correcao-nota"></p>
+                        <p class="correcao-resposta" id="correcao-sua-resposta"></p>
+                        <p class="correcao-resposta" id="correcao-resposta-certa"></p>
+                        <p class="correcao-explicacao hidden" id="correcao-explicacao"></p>
+                    </div>
+                </div>
+                <div class="barra-acoes">
+                    <div class="barra-acoes-interna">
+                        <button class="botao-rota secundario" id="btn-anterior" onclick="questaoAnterior()" aria-label="Questão anterior" disabled>
+                            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                        </button>
+                        <button class="botao-rota principal" id="btn-proxima" onclick="proximaQuestao()">
+                            Próxima
+                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                        </button>
+                        <button class="botao-rota principal hidden" id="btn-finalizar" onclick="finalizarSimulado()">
+                            <i class="fas fa-flag-checkered" aria-hidden="true"></i>
+                            Finalizar
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Tela de resultados -->
-        <section class="section hidden" id="tela-resultado">
-            <div class="container">
-                <div class="columns is-centered">
-                    <div class="column is-10">
-                        <div class="modern-card card fade-in">
-                            <div class="card-content result-container">
-                                
-                                <!-- Título e ícone -->
-                                <div class="mb-5">
-                                    <i id="icone-resultado" class="fas fa-trophy has-text-warning" style="font-size: 4rem;"></i>
-                                    <h2 class="title is-1 mt-3" id="titulo-resultado">Parabéns!</h2>
-                                    <p class="subtitle is-4" id="subtitulo-resultado">Você foi aprovado!</p>
-                                </div>
-
-                                <!-- Círculo de pontuação -->
-                                <div class="score-circle approved" id="circulo-pontuacao">
-                                    <span id="pontuacao-display">0/30</span>
-                                </div>
-
-                                <!-- Estatísticas -->
-                                <div class="columns is-multiline mt-5">
-                                    <div class="column is-3">
-                                        <div class="stat-card">
-                                            <div class="stat-number has-text-success" id="total-acertos">0</div>
-                                            <p class="heading">
-                                                <i class="fas fa-check-circle mr-1"></i>
-                                                Acertos
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="column is-3">
-                                        <div class="stat-card">
-                                            <div class="stat-number has-text-danger" id="total-erros">0</div>
-                                            <p class="heading">
-                                                <i class="fas fa-times-circle mr-1"></i>
-                                                Erros
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="column is-3">
-                                        <div class="stat-card">
-                                            <div class="stat-number has-text-info" id="percentual">0%</div>
-                                            <p class="heading">
-                                                <i class="fas fa-percentage mr-1"></i>
-                                                Aproveitamento
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="column is-3">
-                                        <div class="stat-card">
-                                            <div class="stat-number has-text-primary" id="tempo-total">0min</div>
-                                            <p class="heading">
-                                                <i class="fas fa-stopwatch mr-1"></i>
-                                                Tempo Total
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Informação adicional -->
-                                <div class="columns is-centered mt-4">
-                                    <div class="column is-8">
-                                        <div class="box has-background-info-light has-text-centered">
-                                            <p class="is-size-6 has-text-weight-semibold mb-2">
-                                                <i class="fas fa-info-circle mr-2"></i>
-                                                <span class="has-text-info">Critério de Aprovação</span>
-                                            </p>
-                                            <p class="is-size-6">
-                                                Para ser aprovado no exame teórico do DETRAN, é necessário acertar pelo menos 
-                                                <strong>21 questões (70%)</strong> de um total de 30 questões.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Mensagem de status -->
-                                <div class="notification mt-5" id="status-aprovacao">
-                                    <p class="is-size-5" id="mensagem-aprovacao"></p>
-                                </div>
-                                
-                                <!-- Botões de ação -->
-                                <div class="field is-grouped is-grouped-centered mt-5">
-                                    <div class="control">
-                                        <button class="button is-primary is-large nav-button" onclick="reiniciarSimulado()">
-                                            <i class="fas fa-redo mr-2"></i>
-                                            <strong>Fazer Novamente</strong>
-                                        </button>
-                                    </div>
-                                    <div class="control">
-                                        <button class="button is-info is-large nav-button" onclick="verRevisao()">
-                                            <i class="fas fa-search mr-2"></i>
-                                            <strong>Ver Revisão</strong>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <section class="hidden" id="tela-resultado">
+            <div class="resultado-conteudo">
+                <div>
+                    <div class="resultado-topo">
+                        <p class="sinal-pontuacao" id="sinal-pontuacao">
+                            <strong id="pontuacao-display">0</strong>
+                            de 30
+                        </p>
+                        <h1 class="resultado-titulo" id="titulo-resultado" tabindex="-1">Resultado</h1>
+                    </div>
+                    <p class="inicio-resumo" id="mensagem-aprovacao"></p>
+                    <div class="resultado-acoes">
+                        <button class="botao-rota principal" onclick="verRevisao()">
+                            Ver revisão
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                        <button class="botao-rota secundario" onclick="reiniciarSimulado()">Novo simulado</button>
                     </div>
                 </div>
+
+                <dl class="resultado-dados">
+                    <div>
+                        <dt>Erros</dt>
+                        <dd id="total-erros">0</dd>
+                    </div>
+                    <div>
+                        <dt>Em branco</dt>
+                        <dd id="total-branco">0</dd>
+                    </div>
+                    <div>
+                        <dt id="rotulo-dado-modo">Chutes</dt>
+                        <dd id="dado-modo">0</dd>
+                    </div>
+                    <div>
+                        <dt>Tempo</dt>
+                        <dd id="tempo-total">0min</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <div class="estrada estrada-inicio" id="estrada-resultado" aria-hidden="true">
+                <div class="faixa-central"></div>
+                <div class="marca-aprovacao"></div>
+                <div class="linha-chegada"></div>
+                <svg class="carro"><use href="#desenho-carro"/></svg>
+            </div>
+            <div class="marcos marcos-inicio" aria-hidden="true">
+                <span style="--marco: 0">0</span>
+                <span style="--marco: 0.6667"><strong>20 para passar</strong></span>
+                <span style="--marco: 1">30</span>
             </div>
         </section>
 
         <!-- Tela de revisão -->
-        <section class="section hidden" id="tela-revisao">
-            <div class="container">
-                <div class="columns is-centered">
-                    <div class="column is-12">
-                        <div class="modern-card card fade-in">
-                            <div class="card-header">
-                                <div class="card-header-title is-size-4">
-                                    <i class="fas fa-clipboard-list mr-2"></i>
-                                    Revisão Detalhada das Questões
-                                </div>
-                                <div class="card-header-icon">
-                                    <button class="button is-primary nav-button" onclick="voltarResultado()">
-                                        <i class="fas fa-arrow-left mr-2"></i>
-                                        Voltar
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <div id="lista-revisao">
-                                    <!-- Lista de revisão será inserida aqui -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <section class="hidden" id="tela-revisao">
+            <div class="revisao-conteudo">
+                <div class="revisao-cabecalho">
+                    <h1 class="revisao-titulo">Revisão</h1>
+                    <button class="botao-rota secundario" onclick="voltarResultado()">
+                        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                        Voltar
+                    </button>
+                </div>
+                <div id="lista-revisao">
+                    <!-- Lista de revisão será inserida aqui -->
                 </div>
             </div>
         </section>
@@ -631,7 +1394,18 @@
         </div>
     </footer>
 
+    <!-- Aviso de saída -->
+    <dialog class="dialogo-sair" id="dialogo-sair" aria-labelledby="dialogo-sair-titulo">
+        <h2 id="dialogo-sair-titulo">Sair do simulado?</h2>
+        <p>Seu progresso nesta tentativa será perdido.</p>
+        <div class="dialogo-acoes">
+            <button class="botao-rota principal" onclick="document.getElementById('dialogo-sair').close()">Continuar simulado</button>
+            <button class="botao-rota secundario" onclick="confirmarSaida()">Sair</button>
+        </div>
+    </dialog>
+
     <!-- JavaScript será carregado externamente -->
+    <script src="questoes.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
