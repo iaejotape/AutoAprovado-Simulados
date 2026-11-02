@@ -6,12 +6,12 @@
 Imagens das placas de sinalização de trânsito:
 
 **Regulamentação (R):**
-- `pare.png` - Placa R-1 (Parada obrigatória)
-- `proibido-estacionar.png` - Placa R-6a (Proibido estacionar)
+- `pare.svg` - Placa R-1 (Parada obrigatória)
+- `proibido-estacionar.svg` - Placa R-6a (Proibido estacionar)
 - `preferencial.png` - Placa R-2 (Dê a preferência)
 - `velocidade-maxima-60.png` - Placa R-19 (Velocidade máxima)
 - `proibido-virar-esquerda.png` - Placa R-5 (Proibido virar à esquerda)
-- `proibido-ultrapassar.png` - Placa R-8 (Proibido ultrapassar)
+- `proibido-ultrapassar.svg` - Placa R-7 (Proibido ultrapassar)
 
 **Advertência (A):**
 - `curva-direita.png` - Placa A-2a (Curva acentuada à direita)

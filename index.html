@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoAprovado | Simulado da prova teórica do Detran</title>
-    <link rel="icon" type="image/svg+xml" href="./img/icone.svg">
+    <link rel="icon" type="image/png" href="./img/favicon.png">
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     
@@ -78,9 +78,9 @@
             color: var(--amarelo-sinal);
         }
 
-        .marca svg {
-            width: 36px;
-            height: 18px;
+        .marca img {
+            width: auto;
+            height: 38px;
         }
 
         /* Animações de transição */
@@ -1116,6 +1116,12 @@
             color: #fff;
         }
 
+        .logo-rodape {
+            display: block;
+            width: 170px;
+            margin: 0 auto 1rem;
+        }
+
         .footer a {
             color: #D5D8DC;
             transition: var(--transition);
@@ -1145,7 +1151,7 @@
     <nav class="navbar is-fixed-top barra-topo" aria-label="Principal">
         <div class="barra-topo-interna">
             <a class="marca" href="./">
-                <svg aria-hidden="true"><use href="#desenho-carro"/></svg>
+                <img src="./img/logo-simbolo.png" alt="">
                 <b>Auto<span>Aprovado</span></b>
             </a>
         </div>
@@ -1369,9 +1375,7 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-4">
-                        <h5 class="title is-5 has-text-white">
-                            AutoAprovado
-                        </h5>
+                        <img class="logo-rodape" src="./img/logo-clara.png" alt="AutoAprovado">
                         <p>Prepare-se para a prova teórica com nosso simulado totalmente GRATUITO, completo e atualizado.</p>
                     </div>
                     <div class="column is-4">
